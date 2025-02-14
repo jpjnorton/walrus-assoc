@@ -34,23 +34,24 @@ export default function Home() {
       <div className="relative text-left text-base font-normal p-8 max-w-3xl text-gray-900 z-20">
         {/* ✅ Ensures text isn't hidden behind anything */}
 We are an association of individuals united by the pursuit of the physical and cerebral. This idea manifests in us through our art, our dedication to strength, and our hunger for knowledge. But what is this war? It is the relentless, self-imposed battle to always be prepared.
-<b />
+<b></b>
+
 We meet challenge with courage, face failure with dignity, and win with grace. We are disciplined, self-reliant, and uphold the trust placed in us. Above all, we hold ourselves accountable — not just to each other, but to the standards we set ourselves.
-<b />
+<b></b>
 Our associates are racers, painters, physicists, soldiers, mathematicians, and more. We hold ourselves to the highest standards of integrity. Associates are steadfast, honorable, generous in spirit, open-handed in camaraderie, and unwavering in resolve.
-<b />
+<b></b>
 When we compete, display our art, or share our research, we do so with the confidence that we have done our utmost to be prepared for our trial.
-<b />
+<b></b>
 We embrace the truth that a life worth living is one of challenge. The value of choosing the hard right over the easy wrong is at the core of all we do.
-<b />
+<b></b>
 The patch is the mark of an associate. It is received once; it is earned daily.
-<b />
+<b></b>
 There are two ways to earn the patch:
-<b />
+<b></b>
 1. Be nominated by an associate in good standing.
 
 2. Submit a body of evidence proving adherence to association principles.
-<b />
+<b></b>
 From time to time, the Walrus Association will make exclusive gear available to associates in good standing. This gear is a mark of our pride and a symbol of the bond we share.
       </div>
     </div>
