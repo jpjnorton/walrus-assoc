@@ -33,13 +33,13 @@ export default function Home() {
         <br /><br />
         We embrace the truth that a life worth living is one of challenge. The value of choosing the hard right over the easy wrong is at the core of all we do.
         <br /><br />
-        The patch is the mark of an associate. It is received once, but earned daily.
+        The patch is the mark of an associate. It is received once; it is earned daily.
         <br /><br />
         There are two ways to earn the patch:
         <br /><br />
         1. Be nominated by an associate in good standing.
         <br /><br />
-        2. Submission of a body of evidence proving adherence to association principles.
+        2. Submit a body of evidence proving adherence to association principles.
         <br /><br />
         From time to time, the Walrus Association will make exclusive gear available to associates in good standing. This gear is a mark of our pride and a symbol of the bond we share.
       </div>
