@@ -12,7 +12,7 @@ export default function Home() {
     <div
       className={`${roboto.variable} flex flex-col items-center justify-center min-h-screen text-2xl font-bold text-center`}
     >
-      <Image src="/walrusassociation/images/walrus2.png" alt="Walrus Logo" width={100} height={100} />
+      <Image src="/walrusassociation/images/walrus2.png" alt="Walrus Logo" width={400} height={400} />
 
       Walrus Association
       <br />
