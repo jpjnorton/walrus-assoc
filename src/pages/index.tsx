@@ -13,7 +13,10 @@ export default function Home() {
       className={`${roboto.variable} flex flex-col items-center justify-center min-h-screen text-2xl font-bold text-center`}
     >
       <Image src="/walrusassociation/images/walrus2.png" alt="Walrus Logo" width={400} height={400} />
+<<<<<<< HEAD
 
+=======
+>>>>>>> b38a159 (Updated styles for mobile visibility)
       Walrus Association
       <br />
       <span className="text-base font-normal p-8">

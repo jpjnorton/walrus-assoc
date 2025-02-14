@@ -1,5 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
+    color : black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +16,27 @@ body {
     align-items: center;
     font-size: 2rem;
     font-weight: bold;
+    position: relative;
+    /* Ensure text is above other elements */
+    z-index: 10;
 }
+
+/* Adjust font size for small screens */
+@media screen and (max-width: 600px) {
+    .container {
+        font-size: 1.5rem; /* Slightly smaller text on mobile */
+    }
+
+    .tagline {
+        font-size: 0.9rem; /* Adjust tagline size */
+    }
+
+    .logo {
+        width: 200px;  /* Scale down the logo */
+        height: 200px;
+    }
+}
+
 
 .logo {
     width: 300px;
@@ -27,4 +48,11 @@ body {
     font-weight: normal;
     padding: 8px;
     margin-top: 10px;
+}
+
+
+/* for debugging */
+* {
+    color: red !important;
+    background-color: yellow !important;
 }
