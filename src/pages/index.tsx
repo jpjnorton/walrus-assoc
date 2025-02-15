@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { Roboto } from "next/font/google";
-
 /*Instagram icon imports*/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 const instagramUrl = "https://www.instagram.com/walrus_association/";
-
 /* OG Meta Tag import */
 import Head from "next/head";
 
@@ -21,8 +19,9 @@ export default function Home() {
   return (
 
     <>
-      {/* OG Meta Tags*/}
+      
       <Head>
+        {/* OG Meta Tags*/}
         {/* Apple iMessage optimization */}
         <meta name="apple-mobile-web-app-title" content="Walrus Association" />
         <meta name="apple-touch-icon" content="/walrus-og-image.jpg" />
