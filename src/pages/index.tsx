@@ -1,14 +1,13 @@
 import Image from "next/image";
-import { Roboto } from "next/font/google";
 /*Instagram icon imports*/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-const instagramUrl = "https://www.instagram.com/walrus_association/";
 /* OG Meta Tag import */
 import Head from "next/head";
+import { Roboto } from "next/font/google";
+// Initialize the font
 
-
-/* Font */
+const instagramUrl = "https://www.instagram.com/walrus_association/";
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
@@ -17,9 +16,7 @@ const roboto = Roboto({
 
 export default function Home() {
   return (
-
     <>
-      
       <Head>
         {/* OG Meta Tags*/}
         {/* Apple iMessage optimization */}

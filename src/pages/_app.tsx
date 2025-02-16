@@ -1,12 +1,21 @@
-import "@/styles/globals.css";
+import '../styles/globals.css';
 import type { AppProps } from "next/app";
 import Script from "next/script";
-import Head from "next/head"; // ✅ Import Head for SEO
+import Head from "next/head"; // Import Head for SEO
+
+/* Font */
+import { Roboto } from "next/font/google";
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        {/* OG Meta Tags */}
         <title>Walrus Association | Strength, Art, Knowledge</title>
         <meta
           name="description"

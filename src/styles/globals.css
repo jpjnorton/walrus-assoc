@@ -18,3 +18,109 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+/* Link Roboto font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Global styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #c1c8ca;
+  margin: 0;
+}
+
+/* Container Styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Ensures vertical centering */
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+  /* Ensure text is above other elements */
+  z-index: 10;
+  width: 90%;
+  /* Ensure content doesn't stretch too wide */
+  max-width: 1000px;
+  /* Max width to maintain readability */
+  padding: 40px 20px;
+  /* Adds space around the content */
+  margin-top: 30px;
+  /* Add space above the container */
+  margin-bottom: 50px;
+  /* Adds space below the container */
+}
+
+/* Logo Styling */
+.logo {
+  width: 300px;
+  /* Logo size */
+  height: 300px;
+  /* Logo size */
+  margin-bottom: 30px;
+  /* Add space below the logo */
+}
+
+/* Adjust font size for small screens */
+@media screen and (max-width: 600px) {
+  .container {
+    font-size: 1.5rem;
+    /* Slightly smaller text on mobile */
+    padding: 10px;
+    /* Reduce padding on mobile */
+  }
+
+  .logo {
+    width: 200px;
+    /* Scale down the logo */
+    height: 200px;
+  }
+}
+
+/* Title Styling */
+h1 {
+  margin-top: 20px;
+  /* Space between the logo and title */
+  font-size: 2.5rem;
+  /* Slightly larger title */
+  font-weight: bold;
+  color: #333;
+}
+
+/* Tagline Styling */
+.tagline {
+  font-size: 1.25rem;
+  /* Slightly larger font for tagline */
+  font-weight: normal;
+  /*padding: 8px;*/
+  margin-top: 15px;
+  color: #333;
+  /* Dark color for the tagline */
+}
+
+/* Adjustments for Text Container */
+.relative {
+  max-width: 900px;
+  margin-top: 30px;
+  padding: 0 20px;
+  line-height: 1.8;
+  /* Increase line height for better readability */
+  text-align: left;
+}
+
+/* Add some space between paragraphs */
+.relative p {
+  margin-bottom: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
