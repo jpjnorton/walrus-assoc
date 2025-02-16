@@ -47,11 +47,12 @@ export default function Home() {
       <div
 
         /* Main Content */
-        /* Logo */
+        
         className={`${roboto.variable} flex flex-col items-center justify-center min-h-screen text-2xl font-bold text-center text-gray-900`} // Ensures visible text
       >
+        {/* Logo */}
         <Image
-          src="/walrusassociation/images/walrus2.png"
+          src="/images/walrus2.png"
           alt="Walrus Logo"
           width={400}
           height={400}
