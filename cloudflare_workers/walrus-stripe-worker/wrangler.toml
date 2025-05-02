@@ -1,0 +1,14 @@
+name = "walrus-stripe-worker"
+main = "src/index.js"
+compatibility_date = "2025-05-01"
+
+[vars]
+ENVIRONMENT = "production"
+
+routes = [
+  { pattern = "api.walrusassociation.com/*", zone_name = "walrusassociation.com" }
+]
+
+# Optional if you're not building with a bundler
+# [build]
+# command = "npm run build"
