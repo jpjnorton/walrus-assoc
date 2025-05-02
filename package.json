@@ -3,15 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build:css": "postcss src/styles/globals.css -o src/styles/output.css",
+    "dev": "next dev"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "next": "15.1.6",
+=======
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "autoprefixer": "^10.4.20",
+    "next": "15.1.6",
+    "postcss-cli": "^11.0.0",
+>>>>>>> 00076a7989b17bcd4ad24ad0f22c6c1f7b041b37
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -19,8 +26,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+<<<<<<< HEAD
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+=======
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
+>>>>>>> 00076a7989b17bcd4ad24ad0f22c6c1f7b041b37
     "typescript": "^5"
   },
   "engines": {
