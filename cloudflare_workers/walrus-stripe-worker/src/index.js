@@ -30,36 +30,44 @@ app.use('*', async (context, next) => {
 });
 
 
-app.post("/create-checkout-session", async (context) => { 
-   
-   // Load the Stripe client from the context
-  const stripe = context.get('stripe');
-  const body = await context.req.json(); // Accepts productId in body
+app.post("/create-checkout-session", async (context) => {
+  const stripe = context.get("stripe");
+  const { productId } = await context.req.json();
+// Load the Stripe client from the context
   
-  /*
-   * Sample checkout integration which redirects a customer to a checkout page
+let lineItem;
+
+  if (productId === "walrus-hat") {
+    lineItem = {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: "Walrus Hat",
+          description: "Richardson 336 duck canvas snapback. Woven Patches. Embossed slogan.",
+        },
+        unit_amount: 2500,
+      },
+      quantity: 1,
+    };
+  } else {
+    return context.json({ error: "Invalid product ID" }, 400);
+  }
+/*
+   * Checkout integration which redirects a customer to a checkout page
    * for the specified line items.
    * See https://stripe.com/docs/payments/accept-a-payment?integration=checkout.
    */
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: { name: "Walrus Sticker Pack" },
-          unit_amount: 500,
-        },
-        quantity: 1,
-      },
-    ],
+    line_items: [lineItem],
     mode: "payment",
     success_url: "https://walrusassociation.com/success",
-    cancel_url: "https://yourdomain.com/cancel",
+    cancel_url: "https://walrusassociation.com/cancel",
   });
-
-  return context.json({ url: session.url });
+//TODO: disallow CORS for this endpoint
+  return context.json({ url: session.url }, 200, {"Access-Control-Allow-Origin": "*"});
 });
+
 
 app.post("/webhook", async (context) => {
   // Load the Stripe API key from context.

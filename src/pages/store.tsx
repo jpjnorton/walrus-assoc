@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 
 const products = [
   {
-    id: "walrus-sticker-pack",
-    name: "Walrus Sticker Pack",
-    price: 500, // price in cents
+    id: "walrus-hat",
+    name: "Walrus Association Hat",
+    price: 2500, // price in cents
     image: "/walrus2.png",
-    description: "High-quality vinyl stickers featuring the Walrus Association mascot.",
+    description: "Richardson 336 duck canvas snapback. Woven Patches. Embossed slogan. ",
   },
 ];
 
@@ -18,7 +18,12 @@ const Store = () => {
 
   const handleCheckout = async (productId: string) => {
     try {
-      const res = await fetch("https://api.walrusassociation.com/create-checkout-session", {
+      // isLocal is True when not production
+      const isLocal = process.env.NODE_ENV !== "production";
+      const workerUrl = isLocal ? "http://127.0.0.1:8787/create-checkout-session"
+        : "https://api.walrusassociation.com/create-checkout-session";
+
+      const res = await fetch(workerUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
