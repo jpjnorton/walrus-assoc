@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from "next/app";
 import Script from "next/script";
 import Head from "next/head"; // Import Head for SEO
+import { CartProvider } from "../context/CartContext";
 
 /* Font */
 import { Roboto } from "next/font/google";
@@ -10,6 +11,7 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -50,8 +52,9 @@ export default function App({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-
-      <Component {...pageProps} />
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
     </>
   );
 }
