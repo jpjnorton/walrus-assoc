@@ -1,4 +1,3 @@
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
@@ -39,7 +38,7 @@ export default function Shop() {
           </Link>
 
           <div className="relative">
-            <FontAwesomeIcon icon={faShoppingCart} className="text-2xl text-gray-700" />
+            <p>Cart</p>
             {cartItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
                 {cartItems}
