@@ -3,7 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { Roboto } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Navbar from "../components/Navbar";
 
 const instagramUrl = "https://www.instagram.com/walrus_association/";
@@ -69,7 +68,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-black text-3xl"
             >
-              <FontAwesomeIcon icon={faInstagram} />
+      
             </a>
             <p className="text-sm text-gray-600 mt-1">Follow us on Instagram</p>
           </div>
