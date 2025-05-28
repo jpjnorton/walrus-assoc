@@ -4,30 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
-import { ethers } from 'ethers';
-
-
-async function connectUp() {
-  // Check if Lukso wallet is injected into the browser
-  if (typeof window !== "undefined" && (window as any).lukso) {
-    const provider = new ethers.BrowserProvider((window as any).lukso);
-
-    try {
-      const accounts = await provider.send("eth_requestAccounts", []);
-      console.log("Connected with", accounts[0]);
-      return accounts[0];
-    } catch (err) {
-      console.error("Failed to connect to Lukso:", err);
-    }
-  } else {
-    alert("Lukso wallet not found. Please install the Lukso browser extension.");
-  }
-}
 
 
 // Placeholder Marret wallet hook
 function useMarretBalance() {
-connectUp()
   return {
     balance: 100, // Example: 100 Marret tokens
     spendMarret: (amount: number) => {
