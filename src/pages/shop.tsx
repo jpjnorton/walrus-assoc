@@ -1,19 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { useCart } from "../context/CartContext";
 import CartDrawer from "../components/CartDrawer";
+import ApiService from "./api/ApiService";
 
-const products = [
-  { id: "1", name: "Walrus Patch", price: "$25", image: "/images/walrus-patch.jpg" },
-  { id: "2", name: "Limited Edition Tee", price: "$40", image: "/images/walrus-shirt.jpg" },
-];
+
+interface ProductCardProps {
+  id: string;
+  name: string;
+  price: string;
+  image: string;
+  onAddToCart?: () => void;
+}
+
+
+const api = new ApiService('http://localhost:3003/api');
+
 
 export default function Shop() {
   const { cart } = useCart(); // ✅ Use the global cart context
   const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
   const [cartOpen, setCartOpen] = useState(false);
+
+  const [products, setProducts] = useState<ProductCardProps[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    api.get<[]>('/products')
+      .then((data) => {
+        console.log('Fetched products:', data.products);
+        setProducts(data.products);
+      })
+      .catch((err) => setError(err.message));
+  }, []);
 
   return (
     <>
@@ -41,8 +62,10 @@ export default function Shop() {
         </div>
 
         <h1 className="text-4xl font-bold mb-10">Store Front (In Production)</h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+      { products.length > 0 &&
+  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
             <ProductCard
               key={product.id}
@@ -55,6 +78,12 @@ export default function Shop() {
             />
           ))}
         </div>
+
+
+        }
+
+  
+   
       </main>
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
