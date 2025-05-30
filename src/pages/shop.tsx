@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import { useCart } from "../context/CartContext";
 import CartDrawer from "../components/CartDrawer";
 import ApiService from "./api/ApiService";
+import Navbar from "@/components/Navbar";
 
 
 interface ProductCardProps {
@@ -38,28 +39,13 @@ export default function Shop() {
 
   return (
     <>
+
       <Head>
         <title>Shop | Walrus Association</title>
       </Head>
-
-      <main className="max-w-6xl mx-auto px-6 py-20">
-        <div className="flex justify-between items-center mb-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-md transition"
-          >
-            ← Back to Home
-          </Link>
-
-          <button onClick={() => setCartOpen(true)} className="relative bg-gray-100 px-4 py-2 rounded hover:bg-gray-200 transition">
-            Cart
-            {cartItemsCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5">
-                {cartItemsCount}
-              </span>
-            )}
-          </button>
-        </div>
+      
+      <main className="mx-auto">
+        <Navbar />
 
         <h1 className="text-4xl font-bold mb-10">Store Front (In Production)</h1>
             
@@ -82,8 +68,6 @@ export default function Shop() {
 
         }
 
-  
-   
       </main>
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>

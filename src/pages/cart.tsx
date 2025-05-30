@@ -6,10 +6,6 @@ import Link from "next/link";
 import ProductCard from "../components/ProductCard";
 // import Web3Toggle from "@/components/Web3Toggle";
 
-const products = [
-  { id: "1", name: "Walrus Patch", price: "$25", image: "/images/walrus-patch.jpg" },
-  { id: "2", name: "Limited Edition Tee", price: "$40", image: "/images/walrus-shirt.jpg" },
-];
 
 export default function Shop() {
   const { addToCart, cart } = useCart();

@@ -6,10 +6,10 @@ import { getProducts, getProductById } from '../controllers/productsController';
 
 const router = Router();
 
-router.use(cors())
+router.use(cors()) // THIS IS ONLY FOR DEVELOPMENT WE DONT WANT CROSS ORIGIN REQUESTS
 
 router.get('/products', getProducts);
-router.get('/products/:id', getProductById);
+router.get('/product/:id', getProductById);
 
 
 export default router;

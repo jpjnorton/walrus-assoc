@@ -5,7 +5,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 
-
 // Placeholder Marret wallet hook
 function useMarretBalance() {
   return {
@@ -23,8 +22,7 @@ export default function CheckoutPage() {
   const [useMarret, setUseMarret] = useState(false);
 
   const subtotal = cart.reduce((sum, item) => {
-    const price = parseFloat(item.price.replace(/[^0-9.]/g, ""));
-    return sum + price * item.quantity;
+    return sum + item.product_price * item.quantity;
   }, 0);
 
   const subtotalInMarret = subtotal * 10; // 1 USD = 10 Marret
@@ -93,14 +91,14 @@ export default function CheckoutPage() {
                       className="flex justify-between items-center border-b pb-4"
                     >
                       <div>
-                        <p className="font-semibold">{item.name}</p>
+                        <p className="font-semibold">{item.product_name}</p>
                         <p className="text-sm text-gray-500">
                           {item.price} × {item.quantity}
                         </p>
                       </div>
                       <img
                         src={item.image}
-                        alt={item.name}
+                        alt={item.product_name}
                         className="w-16 h-16 object-cover rounded"
                       />
                     </li>
