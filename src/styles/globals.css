@@ -36,6 +36,10 @@ body {
   margin: 0;
 }
 
+#__next {
+  width: 100%;
+}
+
 /* Container Styling */
 .container {
   display: flex;

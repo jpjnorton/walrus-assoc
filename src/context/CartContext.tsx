@@ -1,54 +1,41 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from "react";
+import { log } from 'console';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-interface CartItem {
+type CartItem = {
   id: string;
   name: string;
+  price: string;
   quantity: number;
-}
+};
 
-interface CartContextType {
+type CartContextType = {
   cart: CartItem[];
-  addToCart: (item: { id: string; name: string }) => void;
+  addToCart: (item: CartItem) => void;
   removeFromCart: (id: string) => void;
-  clearCart: () => void;
-}
+};
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
+export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [isClient, setIsClient] = useState(false); // ✅ flag to check client-side
 
   useEffect(() => {
-    setIsClient(true); // Now safe to use localStorage
-    const storedCart = typeof window !== "undefined" ? localStorage.getItem("cart") : null;
-    if (storedCart) {
-      try {
-        setCart(JSON.parse(storedCart));
-      } catch (e) {
-        console.error("Failed to parse cart from localStorage", e);
-      }
-    }
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) setCart(JSON.parse(storedCart));
   }, []);
 
   useEffect(() => {
-    if (isClient) {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-  }, [cart, isClient]);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
-  const addToCart = (item: { id: string; name: string }) => {
+
+  const addToCart = (item: CartItem) => {
     setCart((prev) => {
-      const existing = prev.find((i) => i.id === item.id);
+      console.log(cart)
+      const existing = prev.find((p) => p.id === item.id);
       if (existing) {
-        return prev.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+        return prev.map((p) =>
+          p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
         );
       }
       return [...prev, { ...item, quantity: 1 }];
@@ -59,19 +46,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const clearCart = () => {
-    setCart([]);
-  };
-
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
-};
+}
 
-export const useCart = () => {
+export function useCart() {
   const context = useContext(CartContext);
-  if (!context) throw new Error("useCart must be used inside CartProvider");
+  if (!context) throw new Error('useCart must be used within CartProvider');
   return context;
-};
+}

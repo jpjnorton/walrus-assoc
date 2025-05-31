@@ -35,7 +35,7 @@ export default function Home() {
         <meta property="og:url" content="https://www.walrusassociation.com" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-
+      
       <main className={`${roboto.variable} font-sans text-gray-900 bg-gray-50`}>
         <Navbar />
 
