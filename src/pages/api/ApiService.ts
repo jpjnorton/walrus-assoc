@@ -6,8 +6,6 @@ export default class ApiService {
     this.baseUrl = baseUrl;
   }
 
-
-
   async get<T>(endpoint: string): Promise<T> {
     const response = await fetch(`${this.baseUrl}${endpoint}`);
     if (!response.ok) {
@@ -32,6 +30,5 @@ export default class ApiService {
 
     return response.json();
   }
-
-  // Add more methods like PUT, DELETE as needed
+  
 }

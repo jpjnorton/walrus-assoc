@@ -5,6 +5,7 @@ import { Roboto } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Navbar from "../components/Navbar";
+import BackgroundVideoLayer from "@/components/BackGroundVideo";
 
 const instagramUrl = "https://www.instagram.com/walrus_association/";
 
@@ -36,7 +37,11 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       
-      <main className={`${roboto.variable} font-sans text-gray-900 bg-gray-50`}>
+       <BackgroundVideoLayer /> {/* ✅ Add this line */}
+
+    
+      <main className="z-10 mx-auto">
+     
         <Navbar />
 
         <section className="pt-32 pb-10 px-4 text-center">
