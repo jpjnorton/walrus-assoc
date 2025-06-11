@@ -4,31 +4,24 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
-
-// Placeholder Marret wallet hook
 function useMarretBalance() {
   return {
-    balance: 100, // Example: 100 Marret tokens
+    balance: 100,
     spendMarret: (amount: number) => {
       console.log(`Spending ${amount} Marret...`);
-      // Connect your smart contract interaction here
     },
   };
 }
 
 export default function CheckoutPage() {
-  const { cart } = useCart();
+  const { cart, removeFromCart, updateQuantity } = useCart();
   const { balance, spendMarret } = useMarretBalance();
   const [useMarret, setUseMarret] = useState(false);
 
-  const subtotal = cart.reduce((sum, item) => {
-    return sum + item.product_price * item.quantity;
-  }, 0);
-
-  const subtotalInMarret = subtotal * 10; // 1 USD = 10 Marret
+  const subtotal = cart.reduce((sum, item) => sum + parseFloat(item.product_price) * item.quantity, 0);
+  const subtotalInMarret = subtotal * 10;
 
   const handleCheckout = () => {
-
     if (useMarret) {
       if (subtotalInMarret > balance) {
         alert("Not enough Marret. Go complete a challenge to earn more!");
@@ -40,7 +33,6 @@ export default function CheckoutPage() {
       alert("Order placed with traditional method!");
     }
   };
-
 
   return (
     <>
@@ -61,7 +53,7 @@ export default function CheckoutPage() {
         <h1 className="text-3xl font-bold mb-10 text-center">Checkout</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left: Shop Pay Button */}
+          {/* Left: Shop Pay */}
           <div className="flex justify-center items-start">
             <a
               href="https://shop.app/pay"
@@ -78,7 +70,7 @@ export default function CheckoutPage() {
             </a>
           </div>
 
-          {/* Right: Cart Summary and Unified Checkout */}
+          {/* Right: Cart Summary */}
           <div>
             {cart.length === 0 ? (
               <p className="text-gray-500">Your cart is empty.</p>
@@ -88,14 +80,42 @@ export default function CheckoutPage() {
                   {cart.map((item) => (
                     <li
                       key={item.id}
-                      className="flex justify-between items-center border-b pb-4"
+                      className="flex justify-between items-start border-b pb-4"
                     >
-                      <div>
+                      <div className="flex-1 pr-4">
                         <p className="font-semibold">{item.product_name}</p>
-                        <p className="text-sm text-gray-500">
-                          {item.price} × {item.quantity}
+                        <p className="text-sm text-gray-600 mb-2">
+                          ${item.product_price}
                         </p>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity - 1)
+                            }
+                            className="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300"
+                          >
+                            -
+                          </button>
+                          <span>{item.quantity}</span>
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity + 1)
+                            }
+                            className="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300"
+                          >
+                            +
+                          </button>
+                        </div>
+
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="mt-2 text-xs text-red-600 hover:underline"
+                        >
+                          Remove
+                        </button>
                       </div>
+
                       <img
                         src={item.image}
                         alt={item.product_name}
@@ -127,7 +147,9 @@ export default function CheckoutPage() {
                   onClick={handleCheckout}
                   className="w-full bg-black text-white py-3 px-4 rounded hover:bg-gray-800 transition"
                 >
-                  {useMarret ? `Complete Order with ${subtotalInMarret} Marret` : "Complete Order"}
+                  {useMarret
+                    ? `Complete Order with ${subtotalInMarret} Marret`
+                    : "Complete Order"}
                 </button>
               </>
             )}

@@ -72,7 +72,7 @@ export default function Shop() {
           </div>
         </div>
       </main>
-
+      
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
