@@ -4,9 +4,9 @@ A modern web application powered by Next.js.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### ✅ Requirements
+### Requirements
 
 Ensure the following tools are installed on your machine:
 
@@ -17,7 +17,7 @@ Ensure the following tools are installed on your machine:
 
 ---
 
-### 📥 Clone the Repository
+### Clone the Repo
 
 1. Open **Visual Studio Code**.
 2. Navigate to:
@@ -36,7 +36,7 @@ Ensure the following tools are installed on your machine:
 
 ---
 
-### 📦 Install Dependencies
+### Install Dependencies
 
 1. Open the **Terminal** in Visual Studio Code.
 2. Navigate to the project directory if you haven't already.
@@ -48,7 +48,7 @@ Ensure the following tools are installed on your machine:
 
 ---
 
-### ▶️ Run the Project
+### Run the Project
 
 After the dependencies are installed, you can start the development server:
 
@@ -64,7 +64,7 @@ http://localhost:3000
 
 ---
 
-## 📁 Project Structure (Optional)
+## Project Structure (Optional)
 
 ```
 walrus-assoc/
@@ -79,12 +79,12 @@ walrus-assoc/
 
 ---
 
-## 🌱 Contributing
+## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
 
 ---
 
-## 📄 License
+## License
 
 [MIT](LICENSE)
