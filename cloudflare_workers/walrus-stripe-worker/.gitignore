@@ -11,4 +11,3 @@ node_modules/
 .dev.vars
 .wrangler/
 .env
-STRIPE_API_KEY='whsec_ef59a263cb52f17faee9b336251e63bfbb740e2a0a90d5d792de93fc9f7c0ed5'
