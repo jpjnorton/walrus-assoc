@@ -33,17 +33,10 @@ app.post("/create-checkout-session", async (context) => {
   const { productId } = await context.req.json();
   
   // Load the Stripe client from the context
-  let lineItem;
+ let lineItem;
   if (productId === "walrus-hat") {
     lineItem = {
-      price_data: {
-        currency: "usd",
-        product_data: {
-          name: "Walrus Hat",
-          description: "Richardson 336 duck canvas snapback. Woven Patches. Embossed slogan.",
-        },
-        unit_amount: 2500,
-      },
+      price: "price_1RZGjlPGbjA51ZFQiiSyOhmV",
       quantity: 1,
     };
   } else {
