@@ -12,7 +12,7 @@
   "author": "{{ authors }}",
   "license": "MIT",
   "dependencies": {
-    "hono": "^4.7.8",
+    "hono": "^4.7.11",
     "stripe": "^15.12.0"
   },
   "devDependencies": {
