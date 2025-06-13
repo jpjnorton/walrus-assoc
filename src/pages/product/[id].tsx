@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useCart } from "../../context/CartContext";
-import ApiService from "../api/ApiService";
+import ApiService from "../services/ApiService";
 import Link from "next/link";
 import CartDrawer from "@/components/CartDrawer";
 import Head from "next/head";

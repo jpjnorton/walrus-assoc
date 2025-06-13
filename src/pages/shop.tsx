@@ -3,7 +3,7 @@ import Head from "next/head";
 import ProductCard from "@/components/ProductCard";
 import { useCart } from "../context/CartContext";
 import CartDrawer from "../components/CartDrawer";
-import ApiService from "./api/ApiService";
+import ApiService from "./services/ApiService";
 import Navbar from "@/components/Navbar";
 
 interface Product {
