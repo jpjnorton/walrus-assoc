@@ -1,23 +1,16 @@
 import { Router } from 'express';
-<<<<<<< HEAD
-=======
-
-import  cors from 'cors';
-
->>>>>>> MitchTODO-main
+import cors from 'cors';
 import { getProducts, getProductById } from '../controllers/productsController';
 
+// Create a new router instance
 const router = Router();
 
-<<<<<<< HEAD
-router.get('/products', getProducts);
-router.get('/products/:id', getProductById);
-=======
+// Apply CORS middleware to the router
 router.use(cors()) // THIS IS ONLY FOR DEVELOPMENT WE DONT WANT CROSS ORIGIN REQUESTS
 
+// Define routes for products
 router.get('/products', getProducts);
-router.get('/product/:id', getProductById);
+router.get('/products/:id', getProductById);
 
->>>>>>> MitchTODO-main
-
+// Export the router to be used in the main app
 export default router;
