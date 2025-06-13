@@ -38,7 +38,8 @@ export default function ProductPage() {
         setLoading(false);
       })
       .catch((err) => {
-        setError("Failed to fetch product.");
+        console.error("Error fetching product:", err); // Log for debugging
+        setError("Sorry, something went wrong. Please try again later."); // Message for users
         setLoading(false);
       });
   }, [id]);

@@ -4,12 +4,12 @@ import { useState } from "react";
 import CartDrawer from "../components/CartDrawer";
 import { useCart } from "../context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
   faHome,
   faInfoCircle,
   faCalendarAlt,
   faStore,
-  faUser,
   faShoppingCart,
   faBars,
   faTimes,
@@ -23,7 +23,7 @@ export default function Navbar() {
 
   const navItem = (
     href: string,
-    icon: any,
+    icon: IconProp,
     label: string,
     exactMatch: boolean = true,
     onClick?: () => void,

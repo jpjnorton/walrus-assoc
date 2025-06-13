@@ -8,8 +8,8 @@ import Navbar from "@/components/Navbar";
 
 interface Product {
   id: string;
-  product_name: string;
-  product_price: string;
+  name: string;
+  price: string;
   image: string;
 }
 
@@ -17,6 +17,8 @@ const api = new ApiService("http://localhost:3003/api");
 
 export default function Shop() {
   const { cart, addToCart } = useCart();
+  // TODO: Implement cartItemsCount
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -31,6 +33,8 @@ export default function Shop() {
         setProducts(data.products);
         setLoading(false);
       })
+      // TODO: Implement @param err 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .catch((err) => {
         setError("Failed to load products. Please try again.");
         setLoading(false);
@@ -65,10 +69,10 @@ export default function Shop() {
               <ProductCard
                 key={product.id}
                 id={product.id}
-                product_name={product.product_name}
-                product_price={product.product_price}
+                product_name={product.name}
+                product_price={product.price}
                 image={product.image}
-                onAddToCart={() => addToCart({ ...product, quantity: 1 })}
+                onAddToCart={() => addToCart({ id: product.id, name: product.name, price: product.price, image: product.image, quantity: 1 })}
               />
             ))}
           </div>

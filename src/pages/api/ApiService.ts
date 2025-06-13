@@ -14,7 +14,7 @@ export default class ApiService {
     return response.json();
   }
 
-  async post<T>(endpoint: string, body: any): Promise<T> {
+  async post<TResponse, TRequest = unknown>(endpoint: string, body: TRequest): Promise<TResponse> {
     const response = await fetch(`${this.baseUrl}${endpoint}`, {
       method: "POST",
       headers: {
@@ -24,7 +24,8 @@ export default class ApiService {
     });
 
     if (!response.ok) {
-      throw new Error(`POST ${endpoint} failed: ${response.status}`);
+      const errorBody = await response.text();
+      throw new Error(`POST ${endpoint} failed: ${response.status} - ${errorBody}`);
     }
 
     return response.json();

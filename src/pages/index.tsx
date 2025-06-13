@@ -1,19 +1,12 @@
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
-import { Roboto } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Navbar from "../components/Navbar";
 import BackgroundVideoLayer from "@/components/BackGroundVideo";
 
 const instagramUrl = "https://www.instagram.com/walrus_association/";
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
 
 export default function Home() {
   return (

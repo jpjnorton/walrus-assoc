@@ -4,14 +4,6 @@ import Script from "next/script";
 import Head from "next/head"; // Import Head for SEO
 import { CartProvider } from "../context/CartContext";
 
-/* Font */
-import { Roboto } from "next/font/google";
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+//import Link from "next/link";
+//import { useRouter } from "next/router";
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -8,7 +8,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("JohnSmith@gmail.com");
   const [password, setPassword] = useState("Rick!");
   const [confirmPassword, setConfirmPassword] = useState("Rick!");
-  const router = useRouter();
+  //const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type CartItem = {
