@@ -4,34 +4,34 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
-function useMarretBalance() {
+function useMeritBalance() {
   return {
     balance: 100,
-    spendMarret: (amount: number) => {
-      console.log(`Spending ${amount} Marret...`);
+    spendMerit: (amount: number) => {
+      console.log(`Spending ${amount} Merit...`);
     },
   };
 }
 
 export default function CheckoutPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
-  const { balance, spendMarret } = useMarretBalance();
-  const [useMarret, setUseMarret] = useState(false);
+  const { balance, spendMerit } = useMeritBalance();
+  const [useMerit, setUseMerit] = useState(false);
 
   const subtotal = cart.reduce(
-    (sum, item) => sum + parseFloat(item.product_price) * item.quantity,
+    (sum, item) => sum + parseFloat(item.price) * item.quantity,
     0,
   );
-  const subtotalInMarret = subtotal * 10;
+  const subtotalInMerit = subtotal * 10;
 
   const handleCheckout = () => {
-    if (useMarret) {
-      if (subtotalInMarret > balance) {
-        alert("Not enough Marret. Go complete a challenge to earn more!");
+    if (useMerit) {
+      if (subtotalInMerit > balance) {
+        alert("Not enough Merit. Go complete a challenge to earn more!");
         return;
       }
-      spendMarret(subtotalInMarret);
-      alert(`Order placed using ${subtotalInMarret} Marret!`);
+      spendMerit(subtotalInMerit);
+      alert(`Order placed using ${subtotalInMerit} Merit!`);
     } else {
       alert("Order placed with traditional method!");
     }
@@ -86,9 +86,9 @@ export default function CheckoutPage() {
                       className="flex justify-between items-start border-b pb-4"
                     >
                       <div className="flex-1 pr-4">
-                        <p className="font-semibold">{item.product_name}</p>
+                        <p className="font-semibold">{item.name}</p>
                         <p className="text-sm text-gray-600 mb-2">
-                          ${item.product_price}
+                          ${item.price}
                         </p>
 
                         <div className="flex items-center gap-2">
@@ -121,7 +121,7 @@ export default function CheckoutPage() {
 
                       <img
                         src={item.image}
-                        alt={item.product_name}
+                        alt={item.name}
                         className="w-16 h-16 object-cover rounded"
                       />
                     </li>
@@ -130,22 +130,22 @@ export default function CheckoutPage() {
 
                 <div className="mb-6 space-y-2">
                   <p className="text-lg font-semibold text-right">
-                    Subtotal: ${subtotal.toFixed(2)} (~{subtotalInMarret}{" "}
-                    Marret)
+                    Subtotal: ${subtotal.toFixed(2)} (~{subtotalInMerit}{" "}
+                    Merit)
                   </p>
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
-                      id="useMarret"
-                      checked={useMarret}
-                      onChange={() => setUseMarret(!useMarret)}
+                      id="useMerit"
+                      checked={useMerit}
+                      onChange={() => setUseMerit(!useMerit)}
                       className="w-4 h-4"
                     />
                     <label
-                      htmlFor="useMarret"
+                      htmlFor="useMerit"
                       className="text-sm text-gray-700"
                     >
-                      Use my Marret (Balance: {balance})
+                      Use my Merit (Balance: {balance})
                     </label>
                   </div>
                 </div>
@@ -154,8 +154,8 @@ export default function CheckoutPage() {
                   onClick={handleCheckout}
                   className="w-full bg-black text-white py-3 px-4 rounded hover:bg-gray-800 transition"
                 >
-                  {useMarret
-                    ? `Complete Order with ${subtotalInMarret} Marret`
+                  {useMerit
+                    ? `Complete Order with ${subtotalInMerit} Merit`
                     : "Complete Order"}
                 </button>
               </>
