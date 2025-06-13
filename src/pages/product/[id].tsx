@@ -110,7 +110,13 @@ export default function ProductPage() {
             </p>
 
             <button
-              onClick={() => addToCart({ ...product, quantity: 1 })}
+              onClick={() => addToCart({
+                id: product.id,
+                name: product.product_name,
+                price: product.product_price,
+                quantity: 1,
+                image: product.image,
+              })}
               className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition"
             >
               Add to Cart
