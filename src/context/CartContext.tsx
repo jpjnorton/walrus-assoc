@@ -6,6 +6,7 @@ type CartItem = {
   name: string;
   price: string;
   quantity: number;
+  image?: string; // Optional image property
 };
 
 type CartContextType = {
@@ -46,9 +47,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
           p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
         );
       }
-      return [...prev, { ...item, quantity: 1 }];
-    });
-  };
+ // Provide a dummy image if not present
+    return [
+      ...prev,
+      { ...item, quantity: 1, image: item.image || "https://via.placeholder.com/48" },
+    ];
+  });
+};
 
   const removeFromCart = (id: string) => {
     setCart((prev) => prev.filter((item) => item.id !== id));

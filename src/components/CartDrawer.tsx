@@ -13,7 +13,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const router = useRouter();
 
   const subtotal = cart.reduce(
-    (sum, item) => sum + parseFloat(item.product_price) * item.quantity,
+    (sum, item) => sum + parseFloat(item.price) * item.quantity,
     0
   );
 
@@ -60,8 +60,8 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                   className="flex justify-between items-start border-b pb-2"
                 >
                   <div className="flex-1 pr-2">
-                    <p className="font-medium">{item.product_name}</p>
-                    <p className="text-sm text-gray-600">${item.product_price}</p>
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-sm text-gray-600">${item.price}</p>
 
                     <div className="mt-2 flex items-center gap-2">
                       <button
@@ -89,7 +89,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
                   <img
                     src={item.image}
-                    alt={item.product_name}
+                    alt={item.name}
                     className="w-12 h-12 object-cover rounded"
                   />
                 </li>
