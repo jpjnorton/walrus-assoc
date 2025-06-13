@@ -31,12 +31,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [cart]);
 
   const updateQuantity = (id: string, quantity: number) => {
-  setCart((prev) =>
-    prev.map((item) =>
-      item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
-    )
-  );
-};
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
+      )
+    );
+  };
 
   const addToCart = (item: CartItem) => {
     setCart((prev) => {
@@ -47,13 +47,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
           p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
         );
       }
- // Provide a dummy image if not present
-    return [
-      ...prev,
-      { ...item, quantity: 1, image: item.image || "https://via.placeholder.com/48" },
-    ];
-  });
-};
+      // Provide a dummy image if not present
+      return [
+        ...prev,
+        { ...item, quantity: 1, image: item.image || "https://via.placeholder.com/48" },
+      ];
+    });
+  };
 
   const removeFromCart = (id: string) => {
     setCart((prev) => prev.filter((item) => item.id !== id));

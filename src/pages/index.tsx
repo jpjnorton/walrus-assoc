@@ -36,12 +36,8 @@ export default function Home() {
         <meta property="og:url" content="https://www.walrusassociation.com" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      
-       <BackgroundVideoLayer /> {/* ✅ Add this line */}
-
-    
+      <BackgroundVideoLayer /> {/* ✅ Add this line */}
       <main className="z-10 mx-auto">
-     
         <Navbar />
 
         <section className="pt-32 pb-10 px-4 text-center">

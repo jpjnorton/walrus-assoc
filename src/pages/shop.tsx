@@ -47,15 +47,17 @@ export default function Shop() {
         <Navbar />
         <div className="px-6 py-20">
           {loading && (
-            <p className="text-center text-gray-500 text-lg">Loading products...</p>
+            <p className="text-center text-gray-500 text-lg">
+              Loading products...
+            </p>
           )}
 
-          {error && (
-            <p className="text-center text-red-600 text-lg">{error}</p>
-          )}
+          {error && <p className="text-center text-red-600 text-lg">{error}</p>}
 
           {!loading && !error && products.length === 0 && (
-            <p className="text-center text-gray-600 text-lg">No products available.</p>
+            <p className="text-center text-gray-600 text-lg">
+              No products available.
+            </p>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -72,7 +74,7 @@ export default function Shop() {
           </div>
         </div>
       </main>
-      
+
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );

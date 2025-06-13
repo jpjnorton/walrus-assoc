@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
-import Image from 'next/image';
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface ProductCardProps {
   id: string;
@@ -23,7 +23,10 @@ export default function ProductCard({
   };
 
   return (
-    <div className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer" onClick={handleCardClick}>
+    <div
+      className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
+      onClick={handleCardClick}
+    >
       <Image
         src={image}
         alt={product_name}

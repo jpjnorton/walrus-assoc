@@ -11,9 +11,9 @@ A modern web application powered by Next.js.
 Ensure the following tools are installed on your machine:
 
 - **Text Editor** – [Visual Studio Code](https://code.visualstudio.com/)
-- **Node.js** – v23.5.0  
-- **npm** – v10.9.2  
-- **Git** – v2.39.5  
+- **Node.js** – v23.5.0
+- **npm** – v10.9.2
+- **Git** – v2.39.5
 
 ---
 

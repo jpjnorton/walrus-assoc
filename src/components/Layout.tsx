@@ -1,5 +1,3 @@
-
-
 import Navbar from "./Navbar";
 import { ReactNode } from "react";
 

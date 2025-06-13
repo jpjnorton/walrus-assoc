@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { useCart } from '../../context/CartContext';
-import ApiService from '../api/ApiService';
-import Link from 'next/link';
-import CartDrawer from '@/components/CartDrawer';
-import Head from 'next/head';
-import Image from 'next/image';
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useCart } from "../../context/CartContext";
+import ApiService from "../api/ApiService";
+import Link from "next/link";
+import CartDrawer from "@/components/CartDrawer";
+import Head from "next/head";
+import Image from "next/image";
 
 interface Product {
   id: string;
@@ -26,12 +26,13 @@ export default function ProductPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const api = new ApiService('http://localhost:3003/api');
+  const api = new ApiService("http://localhost:3003/api");
 
   useEffect(() => {
     if (!id) return;
 
-    api.get<{ product: Product }>(`/product/${id}`)
+    api
+      .get<{ product: Product }>(`/product/${id}`)
       .then((data) => {
         setProduct(data.product);
         setLoading(false);
@@ -101,7 +102,9 @@ export default function ProductPage() {
 
           <div>
             <h1 className="text-3xl font-bold mb-2">{product.product_name}</h1>
-            <p className="text-xl text-gray-700 mb-4">${product.product_price}</p>
+            <p className="text-xl text-gray-700 mb-4">
+              ${product.product_price}
+            </p>
             <p className="text-gray-600 mb-6">
               {product.description || "No description available."}
             </p>

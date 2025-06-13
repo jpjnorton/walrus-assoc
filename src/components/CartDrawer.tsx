@@ -14,7 +14,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
   const subtotal = cart.reduce(
     (sum, item) => sum + parseFloat(item.price) * item.quantity,
-    0
+    0,
   );
 
   useEffect(() => {
@@ -26,11 +26,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   return (
     <div className="fixed inset-0 z-50 flex">
       {/* Overlay */}
-      <div
-        className="fixed inset-0 bg-black bg-opacity-50"
-        onClick={onClose}
-      />
-
+      <div className="fixed inset-0 bg-black bg-opacity-50" onClick={onClose} />
 
       {/* Drawer */}
       <div
@@ -65,14 +61,18 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
                     <div className="mt-2 flex items-center gap-2">
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
                         className="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300"
                       >
                         -
                       </button>
                       <span className="px-2">{item.quantity}</span>
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
                         className="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300"
                       >
                         +
@@ -119,5 +119,3 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     </div>
   );
 }
-
-

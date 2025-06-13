@@ -7,17 +7,17 @@ const app = new Hono();
 /**
  * Setup Stripe SDK prior to handling a request
  */
-app.use('*', async (context, next) => {
+app.use("*", async (context, next) => {
   // Load the Stripe API key from context.
   const { STRIPE_API_KEY: stripeKey } = env(context);
 
-  // Instantiate the Stripe client object 
+  // Instantiate the Stripe client object
   const stripe = new Stripe(stripeKey, {
     appInfo: {
       // For sample support and debugging, not required for production:
       name: "stripe-samples/stripe-node-cloudflare-worker-template",
       version: "0.0.1",
-      url: "https://github.com/stripe-samples"
+      url: "https://github.com/stripe-samples",
     },
     maxNetworkRetries: 3,
     timeout: 30 * 1000,
@@ -31,9 +31,9 @@ app.use('*', async (context, next) => {
 app.post("/create-checkout-session", async (context) => {
   const stripe = context.get("stripe");
   const { productId } = await context.req.json();
-  
+
   // Load the Stripe client from the context
- let lineItem;
+  let lineItem;
   if (productId === "walrus-hat") {
     lineItem = {
       price: "price_1RZGjlPGbjA51ZFQiiSyOhmV",
@@ -43,10 +43,10 @@ app.post("/create-checkout-session", async (context) => {
     return context.json({ error: "Invalid product ID" }, 400);
   }
   /*
-     * Checkout integration which redirects a customer to a checkout page
-     * for the specified line items.
-     * See https://stripe.com/docs/payments/accept-a-payment?integration=checkout.
-     */
+   * Checkout integration which redirects a customer to a checkout page
+   * for the specified line items.
+   * See https://stripe.com/docs/payments/accept-a-payment?integration=checkout.
+   */
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     line_items: [lineItem],
@@ -55,7 +55,9 @@ app.post("/create-checkout-session", async (context) => {
     cancel_url: "https://walrusassociation.com/cancel",
   });
   //TODO: disallow CORS for this endpoint
-  return context.json({ url: session.url }, 200, { "Access-Control-Allow-Origin": "*" });
+  return context.json({ url: session.url }, 200, {
+    "Access-Control-Allow-Origin": "*",
+  });
 });
 
 function logMinimal(message, event) {
@@ -67,7 +69,7 @@ function logMinimal(message, event) {
     amount: obj.amount,
     currency: obj.currency,
     customer: obj.customer,
-    created: obj.created
+    created: obj.created,
   };
   console.log(message, summary);
 }
@@ -82,7 +84,7 @@ function logByType(event) {
         currency: obj.currency,
         customer: obj.customer,
         description: obj.description,
-        status: obj.status
+        status: obj.status,
       });
       break;
 
@@ -92,7 +94,7 @@ function logByType(event) {
         amount_received: obj.amount_received,
         status: obj.status,
         currency: obj.currency,
-        customer: obj.customer
+        customer: obj.customer,
       });
       break;
 
@@ -102,7 +104,7 @@ function logByType(event) {
         last_payment_error: obj.last_payment_error?.message,
         amount: obj.amount,
         customer: obj.customer,
-        currency: obj.currency
+        currency: obj.currency,
       });
       break;
 
@@ -123,7 +125,7 @@ function logByType(event) {
         amount_refunded: obj.amount_refunded,
         status: obj.status,
         currency: obj.currency,
-        reason: obj.refunds?.data?.[0]?.reason
+        reason: obj.refunds?.data?.[0]?.reason,
       });
       break;
 
@@ -132,7 +134,7 @@ function logByType(event) {
         id: obj.id,
         email: obj.email,
         name: obj.name,
-        description: obj.description
+        description: obj.description,
       });
       break;
 
@@ -145,7 +147,7 @@ function logByType(event) {
         status: obj.status,
       });
       break;
-      
+
     default:
       logMinimal(`ℹ️ Unhandled event type: ${event.type}`, event);
       break;
@@ -161,7 +163,11 @@ app.post("/webhook", async (context) => {
     if (!signature) return context.text("", 400);
 
     const body = await context.req.text();
-    const event = await stripe.webhooks.constructEventAsync(body, signature, STRIPE_WEBHOOK_SECRET);
+    const event = await stripe.webhooks.constructEventAsync(
+      body,
+      signature,
+      STRIPE_WEBHOOK_SECRET,
+    );
 
     logByType(event);
     return context.text("", 200);

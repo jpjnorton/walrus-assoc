@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Script from "next/script";
 import Head from "next/head"; // Import Head for SEO
@@ -11,7 +11,6 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -29,13 +28,25 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="author" content="Walrus Association" />
         <meta property="og:title" content="Walrus Association" />
-        <meta property="og:description" content="We are an association of athletes, artists, and scholars pursuing strength, art, and knowledge." />
-        <meta property="og:image" content="https://www.walrusassociation.com/images/walrus2.png" />
+        <meta
+          property="og:description"
+          content="We are an association of athletes, artists, and scholars pursuing strength, art, and knowledge."
+        />
+        <meta
+          property="og:image"
+          content="https://www.walrusassociation.com/images/walrus2.png"
+        />
         <meta property="og:url" content="https://www.walrusassociation.com" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Walrus Association" />
-        <meta name="twitter:description" content="We meet challenge with courage, face failure with dignity, and win with grace." />
-        <meta name="twitter:image" content="https://www.walrusassociation.com/images/walrus2.png" />
+        <meta
+          name="twitter:description"
+          content="We meet challenge with courage, face failure with dignity, and win with grace."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.walrusassociation.com/images/walrus2.png"
+        />
       </Head>
 
       {/* Google Tag Manager - Load in the <head> */}
@@ -52,7 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      
+
       <CartProvider>
         <Component {...pageProps} />
       </CartProvider>

@@ -26,7 +26,7 @@ export default function Navbar() {
     icon: any,
     label: string,
     exactMatch: boolean = true,
-    onClick?: () => void
+    onClick?: () => void,
   ) => (
     <Link
       href={href}
@@ -37,8 +37,8 @@ export default function Navbar() {
             ? "font-bold text-black"
             : "text-gray-700"
           : pathname.startsWith(href)
-          ? "font-bold text-black"
-          : "text-gray-700"
+            ? "font-bold text-black"
+            : "text-gray-700"
       }`}
     >
       <FontAwesomeIcon icon={icon} className="text-base" />
@@ -91,7 +91,10 @@ export default function Navbar() {
 
           {/* Hamburger Icon */}
           <div className="md:hidden">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="text-xl text-gray-700">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-xl text-gray-700"
+            >
               <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
             </button>
           </div>
@@ -101,8 +104,12 @@ export default function Navbar() {
         {menuOpen && (
           <div className="md:hidden px-6 pb-4 space-y-2 bg-white shadow-sm">
             {navItem("/", faHome, "Home", true, () => setMenuOpen(false))}
-            {navItem("/#about", faInfoCircle, "About", false, () => setMenuOpen(false))}
-            {navItem("/events", faCalendarAlt, "Events", true, () => setMenuOpen(false))}
+            {navItem("/#about", faInfoCircle, "About", false, () =>
+              setMenuOpen(false),
+            )}
+            {navItem("/events", faCalendarAlt, "Events", true, () =>
+              setMenuOpen(false),
+            )}
             {navItem("/shop", faStore, "Shop", true, () => setMenuOpen(false))}
             <Link
               href="/login"

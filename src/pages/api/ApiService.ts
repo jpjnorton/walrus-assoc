@@ -1,4 +1,3 @@
-
 export default class ApiService {
   private baseUrl: string;
 
@@ -11,15 +10,15 @@ export default class ApiService {
     if (!response.ok) {
       throw new Error(`GET ${endpoint} failed: ${response.status}`);
     }
-    
+
     return response.json();
   }
 
   async post<T>(endpoint: string, body: any): Promise<T> {
     const response = await fetch(`${this.baseUrl}${endpoint}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     });
@@ -30,5 +29,4 @@ export default class ApiService {
 
     return response.json();
   }
-  
 }

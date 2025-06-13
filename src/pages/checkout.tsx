@@ -18,7 +18,10 @@ export default function CheckoutPage() {
   const { balance, spendMarret } = useMarretBalance();
   const [useMarret, setUseMarret] = useState(false);
 
-  const subtotal = cart.reduce((sum, item) => sum + parseFloat(item.product_price) * item.quantity, 0);
+  const subtotal = cart.reduce(
+    (sum, item) => sum + parseFloat(item.product_price) * item.quantity,
+    0,
+  );
   const subtotalInMarret = subtotal * 10;
 
   const handleCheckout = () => {
@@ -127,7 +130,8 @@ export default function CheckoutPage() {
 
                 <div className="mb-6 space-y-2">
                   <p className="text-lg font-semibold text-right">
-                    Subtotal: ${subtotal.toFixed(2)} (~{subtotalInMarret} Marret)
+                    Subtotal: ${subtotal.toFixed(2)} (~{subtotalInMarret}{" "}
+                    Marret)
                   </p>
                   <div className="flex items-center gap-2">
                     <input
@@ -137,7 +141,10 @@ export default function CheckoutPage() {
                       onChange={() => setUseMarret(!useMarret)}
                       className="w-4 h-4"
                     />
-                    <label htmlFor="useMarret" className="text-sm text-gray-700">
+                    <label
+                      htmlFor="useMarret"
+                      className="text-sm text-gray-700"
+                    >
                       Use my Marret (Balance: {balance})
                     </label>
                   </div>

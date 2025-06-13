@@ -22,21 +22,27 @@ npm install
 ```
 
 ### 🚀 2. Run the development server
+
 ```bash
 npm run dev
 ```
+
 You should see
 ✅ Server running at http://localhost:{port}
- from the console.
+from the console.
 
 ### 🧪 3. Test the API
+
 Use Postman or curl to send a request:
 
 Endpoint:
+
 ```bash
 POST http://localhost:3002/products
 ```
-it should return 
+
+it should return
+
 ```bash
 {
   "success": true,
