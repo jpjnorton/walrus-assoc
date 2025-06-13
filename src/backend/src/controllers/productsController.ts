@@ -1,10 +1,18 @@
 import { Request, Response } from 'express';
 
+<<<<<<< HEAD
 const products = [
     { id: 1, product_name: "Walrus Patch", product_price: 25, image: "/images/walrus-patch.jpg" },
     { id: 2, product_name: "Limited Edition Tee", product_price: 40, image: "/images/walrus-shirt.jpg" },
     { id: 3, product_name: "Walrus Patch 2nd", product_price: 32, image: "/images/walrus-patch.jpg" },
     { id: 4, product_name: "Limited Edition Tee 2nd", product_price: 44, image: "/images/walrus-shirt.jpg" },
+=======
+
+const products = [
+    { id: 1, product_name: "Walrus Patch", product_price: 10, image: "/images/walrus-patch.jpg" },
+    { id: 2, product_name: "Walrus Hat", product_price: 30, image: "/images/walrus-hat.jpg" },
+    { id: 3, product_name: "Walrus Sticker", product_price: 5, image: "/images/walrus-sticker.jpg" }
+>>>>>>> MitchTODO-main
 ];
 
 export const getProducts = (req: Request, res: Response): void => {
@@ -21,3 +29,9 @@ export const getProductById = (req: Request, res: Response): void => {
     res.status(404).json({ success: false, message: 'Product not found' });
   }
 };
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> MitchTODO-main

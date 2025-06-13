@@ -36,6 +36,10 @@ body {
   margin: 0;
 }
 
+#__next {
+  width: 100%;
+}
+
 /* Container Styling */
 .container {
   display: flex;
@@ -124,4 +128,17 @@ h1 {
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.1s ease-out forwards;
 }
