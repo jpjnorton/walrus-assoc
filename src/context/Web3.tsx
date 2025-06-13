@@ -1,23 +1,29 @@
 import { ethers } from "ethers";
 
-export function connect() {
-  /* Without casting, led to type inference issue. 'providers' implicitly has type 'any[]' in some locations where the type can't be determined.
-  */
+export async function connect() {
+  /* Type inference issue. 'providers' implicitly has type "any[]"" in some locations where type can't be determined*/
   // let providers = [];
 
-  // In future, we can  also define an interface for providers later. But for now, a safe patch is:
+  // Workaround to avoid type inference issues with the "providers" array.
   let providers: any[] = [];
 
   window.addEventListener("eip6963:announceProvider", (event) => {
-    providers.push(event.detail);
+    providers.push((event as CustomEvent).detail);
   });
 
-  // Request installed providers
+  // Trigger providers to announce themselves
   window.dispatchEvent(new Event("eip6963:requestProvider"));
 
-  // pick a provider to instantiate (providers[n].info)
-  const provider = new ethers.BrowserProvider(providers[0].provider);
+  // TODO: Proper provider selection logic. For now, wait briefly.
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  const injected = providers[0].provider;
+  const accounts = await injected.request({ method: "eth_requestAccounts" });
 
-  const accounts = await provider.eth.requestAccounts();
+  // Pick a provider to instantiate (providers[n].info)
+  //const provider = new ethers.BrowserProvider(providers[0].provider);
+
+  /* Low-level Web3 call: Mitch may be relying on this exact flow */
+  // const accounts = await provider.eth.requestAccounts(); 
+
   console.log("Connected with", accounts[0]);
 }
